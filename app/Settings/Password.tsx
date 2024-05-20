@@ -5,6 +5,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Image from 'next/image';
+import userClass from '@/common/class/user.class.';
 
 function Password() {
   const [showCurrentPassword, setShowCurrentPassword] = React.useState(false);
@@ -31,7 +32,11 @@ function Password() {
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      // handle form submission
+     userClass.changePassword(values).then((res)=>{
+        console.log(res)
+     }).catch((err)=>{
+        console.error(err)
+     })
     },
   });
 

@@ -26,8 +26,9 @@ interface SUBSCRIPTION {
 }
 
 interface UPDATEUSERPASSWORD {
-    currentPassword: string;
-    newPassword: string;
+  oldPassword: string;
+  password: string;
+  confirmPassword: string;
 }
 class user{
     //get profile details
