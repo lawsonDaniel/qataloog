@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
+import { Box } from "@mui/material";
+import Header from "@/Component/Dashboard/header";
+import Sidebar from "@/Component/Dashboard/sidebar";
 
-const inter = Inter({ subsets: ["latin"] });
+const lato = Lato({
+  weight: ["100", "300", "400",  "700" ,"900" ],
+  subsets: ["latin" ,"latin-ext"]
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +22,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={lato.className}>
+        <Box sx={{
+          overflowY:"hidden",
+          height:"100vh"
+        }}>
+            <Header/>
+            <Box className="flex py-5 bg-[#FCFCFF]">
+              <Sidebar/>
+              <Box sx={{
+                height:'85vh',
+                overflowY:"auto"
+              }} className="px-5 w-full">
+              {children}
+              </Box>
+            </Box>
+        </Box>
+      </body>
     </html>
   );
 }
